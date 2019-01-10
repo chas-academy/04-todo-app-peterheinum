@@ -28,10 +28,15 @@ class TodoController extends Controller {
         $todoId = $urlParams['id']; // the id of the todo we're trying to update
         $completed = isset($body['status']) ? 1 : 0; // whether or not the todo has been checked or not
         $title = $body['title'];
-        $result = TodoItem::updateTodo($todoId, $title);
+        
+        $completed == 1 ? $completed = "true" : $completed = "false";        
+        $result = TodoItem::updateTodo($todoId, $title, $completed);
+
+
         if ($result) {
           $this->redirect('/');
         }
+
         
 
         // TODO: Implement me!
