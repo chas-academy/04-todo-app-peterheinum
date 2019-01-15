@@ -67,12 +67,28 @@ class TodoController extends Controller {
      */
     public function toggle()
     {
+      $todos = TodoItem::findAll(); //Stolen function that will coutn if there are any completed or not
+      $counter = count(array_filter($todos, function($todo) { return $todo['completed'] === "false"; }));
+      if($counter > 0){
+        $result = TodoItem::toggleTodos("true");        
+      } else {
+        $result = TodoItem::toggleTodos("false");
+      }
+
+      
+      if ($result) {
+        $this->redirect('/');
+      }
       // (OPTIONAL) TODO: This action should toggle all todos to completed, or not completed.
     }
 
     public function clear()
     {
-      // (OPTIONAL) TODO: This action should remove all completed todos from the table.
+      $result = TodoItem::clearCompletedTodos();
+      if ($result) {
+        $this->redirect('/');
+      }
+      //(OPTIONAL) TODO: This action should remove all completed todos from the table.
     }
 
 }
