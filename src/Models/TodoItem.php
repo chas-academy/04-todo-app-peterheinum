@@ -32,9 +32,7 @@ class TodoItem extends Model
         return $result;
     }
 
-    public static function filterTodos($filter){
-        
-    }
+    
     
     // (Optional bonus methods below)
     public static function toggleTodos($completed)

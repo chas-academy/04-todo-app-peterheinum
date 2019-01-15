@@ -35,9 +35,7 @@ class TodoController extends Controller {
 
         if ($result) {
           $this->redirect('/');
-        }
-
-        
+        }   
 
         // TODO: Implement me!
         // This action should update a specific todo item in the todos table using the TodoItem::updateTodo method.
@@ -81,7 +79,7 @@ class TodoController extends Controller {
       }
       // (OPTIONAL) TODO: This action should toggle all todos to completed, or not completed.
     }
-
+    
     public function clear()
     {
       $result = TodoItem::clearCompletedTodos();
@@ -89,6 +87,11 @@ class TodoController extends Controller {
         $this->redirect('/');
       }
       //(OPTIONAL) TODO: This action should remove all completed todos from the table.
+    }
+    
+    public function ChangeOrder(){
+      $todos = TodoItem::findAllAndSortByCompleted();
+      return $this->view('index', ['todos' => $todos]);
     }
 
 }

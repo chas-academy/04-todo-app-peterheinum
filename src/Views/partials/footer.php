@@ -3,6 +3,9 @@
     <form method="POST" action="/todos/clearCompleted">
     <button class="clear-completed" type="submit">Clear completed</button>
     </form>
+    <form action="/todos/ChangeOrder" method="post">
+    <button class="clear-completed" type="submit" style="margin-right:8px;">Filter completed</button>
+    </form>
 </footer>
 
 </main>

@@ -46,6 +46,22 @@ abstract class Model
         }
     }
 
+    public static function findAllAndSortByCompleted()
+    {
+        try {
+            $query = "SELECT * FROM " . static::TABLENAME . " ORDER BY completed DESC";
+            self::$db->query($query);
+            $results = self::$db->resultset();
+
+            if (!empty($results)) {
+                return $results;
+            } else {
+                return [];
+            }
+        } catch (PDOException $err) {
+            return $err->getMessage();
+        }
+    }
     /** 
      * Generic model method for selecting a specific item from a model class
      * that inhertis this abstract model
