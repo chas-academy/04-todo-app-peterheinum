@@ -49,7 +49,24 @@ abstract class Model
     public static function findAllAndSortByCompleted()
     {
         try {
-            $query = "SELECT * FROM " . static::TABLENAME . " ORDER BY completed DESC";
+            $query = "SELECT * FROM " . static::TABLENAME . " WHERE completed = 'true'";
+            self::$db->query($query);
+            $results = self::$db->resultset();
+
+            if (!empty($results)) {
+                return $results;
+            } else {
+                return [];
+            }
+        } catch (PDOException $err) {
+            return $err->getMessage();
+        }
+    }
+
+    public static function findAllAndSortByUnCompleted()
+    {
+        try {
+            $query = "SELECT * FROM " . static::TABLENAME . " WHERE completed = 'false'";
             self::$db->query($query);
             $results = self::$db->resultset();
 

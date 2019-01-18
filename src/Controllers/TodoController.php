@@ -89,9 +89,18 @@ class TodoController extends Controller {
       //(OPTIONAL) TODO: This action should remove all completed todos from the table.
     }
     
-    public function ChangeOrder(){
+    public function filterCompleted(){
       $todos = TodoItem::findAllAndSortByCompleted();
       return $this->view('index', ['todos' => $todos]);
     }
+
+    public function filterUnCompleted(){
+      $todos = TodoItem::findAllAndSortByUnCompleted();
+      return $this->view('index', ['todos' => $todos]);
+    }
+
+    
+
+
 
 }

@@ -2,10 +2,9 @@
     <span class="todo-count"><?= count(array_filter($todos, function($todo) { return $todo['completed'] === "false"; })) ?> item<?= "".count($todos) !== 1 ? "s" : "" ?> left</span>
     <form method="POST" action="/todos/clearCompleted">
     <button class="clear-completed" type="submit">Clear completed</button>
-    </form>
-    <form action="/todos/ChangeOrder" method="post">
-    <button class="clear-completed" type="submit" style="margin-right:8px;">Filter completed</button>
-    </form>
+    </form>    
+    <a class="clear-completed" href="todos/filterCompleted" style="margin-right:8px;">Filter completed</a    
+    <a class="clear-completed" href="todos/filterUnCompleted" style="margin-right:8px;">Filter uncompleted</a>
 </footer>
 
 </main>
