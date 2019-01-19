@@ -3,8 +3,8 @@
     <form method="POST" action="/todos/clearCompleted">
     <button class="clear-completed" type="submit">Clear completed</button>
     </form>    
-    <a class="clear-completed" href="todos/filterCompleted" style="margin-right:8px;">Filter completed</a    
-    <a class="clear-completed" href="todos/filterUnCompleted" style="margin-right:8px;">Filter uncompleted</a>
+    <a class="clear-completed" href="/todos/filterCompleted" style="margin-right:8px;">Filter completed</a> 
+    <a class="clear-completed" href="/todos/filterUnCompleted" style="margin-right:8px;">Filter uncompleted</a>
 </footer>
 
 </main>
