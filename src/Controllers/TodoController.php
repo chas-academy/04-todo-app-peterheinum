@@ -15,11 +15,14 @@ class TodoController extends Controller {
     public function add()
     {
         $body = filter_body();
-        $result = TodoItem::createTodo($body['title']);
-
-        if ($result) {
+        if($body['title'] != ""){
+          $result = TodoItem::createTodo($body['title']);
+          if ($result) {
+            $this->redirect('/');
+          }
+        } else {
           $this->redirect('/');
-        }
+        }        
     }
 
     public function update($urlParams)
@@ -99,7 +102,19 @@ class TodoController extends Controller {
       return $this->view('index', ['todos' => $todos]);
     }
 
-    
+    public function searchFilter(){
+      $body = filter_body();      
+      $text = $body['searchtext'];
+
+      if($text != ""){
+        $filteredarray = TodoItem::searchText($text);       
+        if(count($filteredarray) != 0){
+          return $this->view('index', ['todos' => $filteredarray]);
+        } 
+      } else {
+        $this->redirect('/');
+      }  
+    }
     
 
 

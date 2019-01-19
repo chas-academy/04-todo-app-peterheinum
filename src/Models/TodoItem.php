@@ -85,4 +85,20 @@ class TodoItem extends Model
             return $err->getMessage();
         }
     }
+
+    public static function searchText($text){
+        try {            
+            $query = "SELECT * FROM " . static::TABLENAME . " WHERE title like '%$text%'";
+            self::$db->query($query);
+            $results = self::$db->resultset();
+
+            if (!empty($results)) {
+                return $results;
+            } else {
+                return [];
+            }
+        } catch (PDOException $err) {
+            return $err->getMessage();
+        }
+    }
 }

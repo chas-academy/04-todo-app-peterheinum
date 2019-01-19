@@ -8,3 +8,4 @@ $router->post('todos/toggle-all', 'TodoController@toggle');
 $router->post('todos/clearCompleted', 'TodoController@clear');
 $router->get('todos/filterCompleted', 'TodoController@filterCompleted');
 $router->get('todos/filterUnCompleted', 'TodoController@filterUnCompleted');
+$router->post('todos/search', 'TodoController@searchFilter');
